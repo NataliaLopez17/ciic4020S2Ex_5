@@ -3,6 +3,8 @@ package ciic4020.list;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+import javax.swing.text.html.parser.Element;
+
 public class ArrayList<E> implements List<E> {
 
 	// private fields
@@ -201,10 +203,19 @@ public class ArrayList<E> implements List<E> {
 	
 	public static int totalCount(String s, List<String>[] array) {
 		int counter = 0;
-		
+		/*
 		for(int i = 0; i < array.length; i++) {
 			if(array[i].contains(s)) {
 				counter++;
+			}
+		}
+		*/
+		for(int i = 0; i < array.length; i++) {
+			List<String> temp = array[i];
+			for(String string: temp) {
+				if(string.equals(s)) {
+					counter++;
+				}
 			}
 		}
 		
@@ -218,7 +229,6 @@ public class ArrayList<E> implements List<E> {
 		int counter2 = 0;
 		for(E i: this) {
 			if(i.equals(e)) {
-				//((List<E>) i).set(counter,f);
 				//i=f;
 				this.set(counter, f);
 				counter2++;
